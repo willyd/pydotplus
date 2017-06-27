@@ -478,6 +478,14 @@ def __find_executables(path):
 
                 success = True
 
+            elif os.path.exists(os.path.join(path, prg + '.bat')):
+                if was_quoted:
+                    progs[prg] = '"' + os.path.join(path, prg + '.bat') + '"'
+                else:
+                    progs[prg] = os.path.join(path, prg + '.bat')
+
+                success = True
+
     if success:
         return progs
     else:
